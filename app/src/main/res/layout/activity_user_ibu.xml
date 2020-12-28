@@ -37,7 +37,7 @@
                         android:paddingTop="20dp"
                         android:text="Profil Pengguna"
                         android:textColor="@color/white"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:textStyle="bold"></TextView>
                 </LinearLayout>
 
@@ -54,7 +54,7 @@
                     android:gravity="center_vertical"
                     android:text="Identitas Ibu"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"></TextView>
             </LinearLayout>
 
@@ -278,7 +278,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tempat Tinggal"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp">
@@ -346,7 +346,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tingkat Pendidikan"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp">
@@ -426,7 +426,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Pekerjaan"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp">
@@ -468,16 +468,12 @@
                         </EditText>
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
-                <!--Tingkat Pendapatan-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -498,7 +494,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Pendapatan per Bulan"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp">
@@ -562,6 +558,11 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"></LinearLayout>
+
                 <!--Next-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -577,7 +578,6 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/next_anak"
                             android:text="Next"
-                            android:inputType="text"
                             android:backgroundTint="@color/purple_main">
                         </Button>
                     </LinearLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserAnak">
+    tools:context=".DataUserAnak">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp">
-        </LinearLayout>-->
+            </LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
@@ -48,14 +48,13 @@
                 android:layout_height="80dp">
 
                 <TextView
-                    android:id="@+id/nama_ibu"
                     android:layout_width="match_parent"
-                    android:layout_marginHorizontal="36dp"
                     android:layout_height="match_parent"
+                    android:layout_marginHorizontal="36dp"
                     android:gravity="center_vertical"
                     android:text="Identitas Anak"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"></TextView>
             </LinearLayout>
 
@@ -95,84 +94,43 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nama Anak"
+                            android:text="Nama"
                             android:textSize="16sp">
                         </TextView>
-                        <com.google.android.material.textfield.TextInputLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"></RelativeLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/nama_ibu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:endIconMode="clear_text">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/nama_anak"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@color/white"
-                                android:textColor="@color/grey"
-                                android:inputType="text"
-                                />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-
-                <!--Tanggal Lahir-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tanggal Lahir"
+                            android:backgroundTint="@color/white"
                             android:textColor="@color/grey"
-                            android:textSize="16sp"></TextView>
+                            android:hint="Nama"
+                            android:textSize="16sp">
+                        </com.google.android.material.textview.MaterialTextView>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
                     </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="24dp"></RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/tanggal_lahir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="Pilih Tanggal"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp"></TextView>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"></RelativeLayout>
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/grey">
-                    </View>
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
-                <!--Berat Lahir-->
+                <!--Umur-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <!--Berat Lahir-->
+                    <!--Umur-->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -187,43 +145,51 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Berat Lahir (kg)"
+                                android:text="Umur (Bulan)"
                                 android:textColor="@color/grey"
                                 android:textSize="16sp"></TextView>
                         </LinearLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            ></RelativeLayout>
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical|center_horizontal">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/berat_lahir"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/grey"
-                                android:inputType="numberDecimal"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
+                            android:hint="Umur"
+                            android:textSize="16sp"
+                            android:id="@+id/usia_ibu">
+                        </TextView>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
                     </LinearLayout>
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_weight="1.5"
-                        android:layout_height="match_parent"></RelativeLayout>
+                        android:layout_height="match_parent">
+                    </RelativeLayout>
                 </LinearLayout>
 
+                <!--Moth BMI-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
+                <!--Umur-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <!--Tinggi Badan-->
+                    <!--Umur-->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -238,130 +204,203 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Tinggi Badan (cm)"
+                                android:text="Moth BMI"
                                 android:textColor="@color/grey"
                                 android:textSize="16sp"></TextView>
                         </LinearLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            >
+                        </RelativeLayout>
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical|center_horizontal">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tinggi_badan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/grey"
-                                android:inputType="numberDecimal"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
+                            android:hint="BMI"
+                            android:textSize="16sp"
+                            android:id="@+id/moth_bmi">
+                        </TextView>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
                     </LinearLayout>
-
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="0.5"
-                        android:layout_height="match_parent"></RelativeLayout>
-
-                    <!--Berat Badan-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Berat Badan (kg)"
-                                android:textColor="@color/grey"
-                                android:textSize="16sp"></TextView>
-                        </LinearLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical|center_horizontal">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/berat_badan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/grey"
-                                android:inputType="numberDecimal"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
+                        android:layout_weight="1.5"
+                        android:layout_height="match_parent">
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
-
-                <!--Jenis Kelamin-->
+                <!--Indeks-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+                    <!--Indeks HAZ-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="Jenis Kelamin"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp"></TextView>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="24dp">
-                    </RelativeLayout>
+                        android:orientation="vertical">
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:id="@+id/radio_group_jenis_kel">
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:text="Laki-Laki"
-                            android:id="@+id/jenis_kelamin_l"
-                            android:onClick="checkButton"
-                            android:checked="true"
-                            android:buttonTint="@color/purple_main">
-                        </RadioButton>
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Indeks HAZ"
+                                android:textColor="@color/grey"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
                         <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:layout_height="match_parent"></RelativeLayout>
-                        <RadioButton
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            >
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:text="Perempuan"
-                            android:id="@+id/jenis_kelamin_p"
-                            android:onClick="checkButton"
-                            android:buttonTint="@color/purple_main">
-                        </RadioButton>
-                    </RadioGroup>
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+                            <TextView
+                                android:id="@+id/indeks_haz"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/grey"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="match_parent"></RelativeLayout>
+                    <!--Indeks WAZ-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Indeks WAZ"
+                                android:textColor="@color/grey"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            >
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+
+                            <TextView
+                                android:id="@+id/indeks_waz"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/grey"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="match_parent"></RelativeLayout>
+                    <!--Indeks WHZ-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Indeks WHZ"
+                                android:textColor="@color/grey"
+                                android:textSize="14dp"></TextView>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            >
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+                            <TextView
+                                android:id="@+id/indeks_whz"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/grey"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:background="@color/grey">
+                        </View>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
-
 
                 <!--Next-->
                 <LinearLayout
@@ -377,14 +416,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/next_anak"
-                            android:text="Next"
+                            android:text="Simpan"
                             android:backgroundTint="@color/purple_main">
                         </Button>
                     </LinearLayout>
                 </LinearLayout>
 
-            </LinearLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

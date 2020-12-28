@@ -3,12 +3,15 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,6 +28,8 @@ public class UserAnak extends AppCompatActivity {
 
     private TextView mDisplayNamaIbu;
     private TextView mDisplayDate;
+
+    EditText namaAnak;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     RadioGroup radioGroupJenisKel;
@@ -73,6 +78,22 @@ public class UserAnak extends AppCompatActivity {
 
         //Tempat Tinggal
         radioGroupJenisKel = findViewById(R.id.radio_group_jenis_kel);
+
+        //Button Next
+        Button nextAnak = (Button)findViewById(R.id.next_anak);
+        namaAnak = (EditText) findViewById(R.id.nama_anak);
+
+        nextAnak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tempNamaAnak = namaAnak.getText().toString();
+                int tempUsia = childAge;
+                Intent i = new Intent(UserAnak.this, DataUserAnak.class);
+                i.putExtra("NamaAnak", tempNamaAnak);
+                i.putExtra("UsiaAnak", tempUsia);
+                startActivity(i);
+            }
+        });
     }
 
     public void checkButton(View v) {
@@ -86,10 +107,17 @@ public class UserAnak extends AppCompatActivity {
 
         Calendar today = Calendar.getInstance();
         int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        int ageMonth = today.get(Calendar.MONTH) - dob.get(Calendar.MONTH);
 
         if (today.get(Calendar.DAY_OF_MONTH)<dob.get(Calendar.DAY_OF_MONTH)){
             age--;
         }
-        return age;
+
+        if (age==0) {
+            return ageMonth;
+        }
+        else {
+            return (age*12)+ageMonth;
+        }
     }
 }

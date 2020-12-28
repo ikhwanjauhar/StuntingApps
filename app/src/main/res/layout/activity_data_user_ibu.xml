@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserAnak">
+    tools:context=".DataUserIbu">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                         android:paddingTop="20dp"
                         android:text="Profil Pengguna"
                         android:textColor="@color/white"
-                        android:textSize="24dp"
+                        android:textSize="24sp"
                         android:textStyle="bold"></TextView>
                 </LinearLayout>
 
@@ -54,7 +54,7 @@
                     android:gravity="center_vertical"
                     android:text="Identitas Ibu"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"></TextView>
             </LinearLayout>
 
@@ -97,69 +97,19 @@
                             android:text="Nama"
                             android:textSize="16sp">
                         </TextView>
-                        <com.google.android.material.textfield.TextInputLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"></RelativeLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/nama_ibu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:endIconMode="clear_text">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/nama_ibu"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@color/white"
-                                android:textColor="@color/grey"
-                                android:inputType="text"
-                                app:endIconMode="clear_text"
-                                />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-
-                <!--Tanggal Lahir-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tanggal Lahir"
+                            android:backgroundTint="@color/white"
                             android:textColor="@color/grey"
-                            android:textSize="16sp"></TextView>
+                            android:hint="Nama"
+                            android:textSize="16sp">
+                        </com.google.android.material.textview.MaterialTextView>
                     </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="24dp"></RelativeLayout>
-
-                    <TextView
-                        android:id="@+id/tanggal_lahir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="Pilih Tanggal"
-                        android:textColor="@color/grey"
-                        android:textSize="16sp"></TextView>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"></RelativeLayout>
-                    <View
-                        android:layout_width="wrap_content"
-                        android:layout_height="1dp"
-                        android:background="@color/grey">
-                    </View>
                 </LinearLayout>
 
                 <LinearLayout
@@ -212,16 +162,18 @@
                     </RelativeLayout>
                 </LinearLayout>
 
-                <RelativeLayout
+                <!--Moth BMI-->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:orientation="horizontal"></RelativeLayout>
+                    android:orientation="horizontal"></LinearLayout>
 
+                <!--Umur-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <!--Tinggi Badan-->
+                    <!--Umur-->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -236,381 +188,35 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Tinggi Badan (cm)"
+                                android:text="Moth BMI"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                         </LinearLayout>
 
-                        <com.google.android.material.textfield.TextInputLayout
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            ></RelativeLayout>
+
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical|center_horizontal">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tinggi_badan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/grey"
-                                android:inputType="numberDecimal"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
+                            android:hint="BMI"
+                            android:textSize="16sp"
+                            android:id="@+id/moth_bmi">
+                        </TextView>
                     </LinearLayout>
-
                     <RelativeLayout
                         android:layout_width="0dp"
-                        android:layout_weight="0.5"
-                        android:layout_height="match_parent"></RelativeLayout>
-
-                    <!--Berat Badan-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Berat Badan (kg)"
-                                android:textColor="@color/grey"
-                                android:textSize="14sp"></TextView>
-                        </LinearLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical|center_horizontal">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/berat_badan"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/white"
-                                android:gravity="center_horizontal"
-                                android:textColor="@color/grey"
-                                android:inputType="numberDecimal"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
+                        android:layout_weight="1.5"
+                        android:layout_height="match_parent">
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
-
-                <!--Tempat Tinggal-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--Tempat Tinggal-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Tempat Tinggal"
-                                android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="24dp">
-                            </RelativeLayout>
-
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:id="@+id/radioGroup">
-                                <RadioButton
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Desa"
-                                    android:id="@+id/tempat_desa"
-                                    android:onClick="checkButton"
-                                    android:checked="true"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RelativeLayout
-                                    android:layout_width="0dp"
-                                    android:layout_weight="0.5"
-                                    android:layout_height="match_parent"></RelativeLayout>
-                                <RadioButton
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Kota"
-                                    android:id="@+id/tempat_kota"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--Tingkat Pendidikan-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Tingkat Pendidikan"
-                                android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="24dp">
-                            </RelativeLayout>
-
-                            <RadioGroup
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:id="@+id/radioGroupPendidikan">
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Tidak Pernah Sekolah"
-                                    android:id="@+id/mothEdu_NoEdu"
-                                    android:onClick="checkButton"
-                                    android:checked="true"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Dasar (SD)"
-                                    android:id="@+id/mothEdu_Primary"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Menengah (SMP-SMA)"
-                                    android:id="@+id/mothEdu_Secondary"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Tinggi (Perguruan Tinggi)"
-                                    android:id="@+id/mothEdu_Higher"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-                <!--Pekerjaan-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--Pekerjaan-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Pekerjaan"
-                                android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="24dp">
-                            </RelativeLayout>
-
-                            <RadioGroup
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:id="@+id/radioGroupPekerjaan">
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Tidak Bekerja"
-                                    android:id="@+id/mothOccup_No"
-                                    android:onClick="checkButton"
-                                    android:checked="true"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Bekerja"
-                                    android:id="@+id/mothOccup_Yes"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                            </RadioGroup>
-                        </LinearLayout>
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/mothOccup"
-                            android:inputType="text"
-                            android:enabled="false">
-                        </EditText>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-
-                <!--Tingkat Pendapatan-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--Tingkat Pendapatan-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Pendapatan per Bulan"
-                                android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="24dp">
-                            </RelativeLayout>
-
-                            <RadioGroup
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:id="@+id/radio_group_pendapatan">
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Poorest"
-                                    android:id="@+id/wealth_index_PS"
-                                    android:onClick="checkButton"
-                                    android:checked="true"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Poorer"
-                                    android:id="@+id/wealth_index_PR"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Middle"
-                                    android:id="@+id/wealth_index_M"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Richer"
-                                    android:id="@+id/wealth_index_RR"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-                                <RadioButton
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textSize="16sp"
-                                    android:text="Richest"
-                                    android:id="@+id/wealth_index_RS"
-                                    android:onClick="checkButton"
-                                    android:buttonTint="@color/purple_main">
-                                </RadioButton>
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
                 <!--Next-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -625,8 +231,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/next_anak"
-                            android:text="Next"
-                            android:inputType="text"
+                            android:text="Simpan"
                             android:backgroundTint="@color/purple_main">
                         </Button>
                     </LinearLayout>

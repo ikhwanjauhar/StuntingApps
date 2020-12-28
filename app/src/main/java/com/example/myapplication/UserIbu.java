@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class UserIbu extends AppCompatActivity {
 
     private TextView mDisplayDate;
     int mothAge;
+    EditText tinggiBadanIbu, beratBadanIbu;
     EditText namaIbu;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -101,6 +103,9 @@ public class UserIbu extends AppCompatActivity {
         });
 
         namaIbu = (EditText) findViewById(R.id.nama_ibu);
+        tinggiBadanIbu = (EditText) findViewById(R.id.tinggi_badan);
+        beratBadanIbu = (EditText) findViewById(R.id.berat_badan);
+
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_anak);
         nextAnak.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +114,23 @@ public class UserIbu extends AppCompatActivity {
                 String tempIbu;
                 tempIbu = namaIbu.getText().toString();
                 int tempUsia = mothAge;
+
+                if (tinggiBadanIbu.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Tinggi Badan Belum Diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (beratBadanIbu.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Berat Badan Belum Diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                double tempTinggiBadan = Double.parseDouble(tinggiBadanIbu.getText().toString());
+                double tempBeratBadan = Double.parseDouble(beratBadanIbu.getText().toString());;
+                double mothBMI = getMothBMI(tempTinggiBadan, tempBeratBadan);
                 Intent i = new Intent(UserIbu.this, DataUserIbu.class);
                 i.putExtra("NamaIbu", tempIbu);
                 i.putExtra("UsiaIbu", tempUsia);
+                i.putExtra("MothBMI", mothBMI);
                 startActivity(i);
             }
         });
@@ -134,5 +153,14 @@ public class UserIbu extends AppCompatActivity {
             age--;
         }
         return age;
+    }
+
+    public double convertCmToM (double cm){
+        return cm*1/100;
+    }
+
+    public double getMothBMI (double tinggiBadanCm, double beratBadanKg){
+        double tinggiM = convertCmToM(tinggiBadanCm);
+        return beratBadanKg/(tinggiM*tinggiM);
     }
 }
