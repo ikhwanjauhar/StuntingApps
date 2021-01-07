@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +31,7 @@ public class UserAnak extends AppCompatActivity {
     private TextView mDisplayNamaIbu;
     private TextView mDisplayDate;
 
-    EditText namaAnak;
+    EditText namaAnak, tinggiBadanAnak, beratBadanAnak;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     RadioGroup radioGroupJenisKel;
@@ -39,6 +41,9 @@ public class UserAnak extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_anak);
+
+        //Retreive objIbu
+        Ibu ibu = (Ibu)getIntent().getSerializableExtra("objIbu");
 
         mDisplayNamaIbu = (TextView) findViewById(R.id.nama_ibu);
         mDisplayNamaIbu.setText("Anak dari Ibu "+getIntent().getStringExtra("NamaIbu"));
@@ -76,8 +81,14 @@ public class UserAnak extends AppCompatActivity {
             }
         };
 
-        //Tempat Tinggal
+        //Jenis Kelamin
         radioGroupJenisKel = findViewById(R.id.radio_group_jenis_kel);
+
+        //Tinggi Badan Anak
+        tinggiBadanAnak = (EditText) findViewById(R.id.tinggi_badan);
+
+        //Berat Badan Anak
+        beratBadanAnak = (EditText) findViewById(R.id.berat_badan);
 
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_anak);
@@ -88,9 +99,35 @@ public class UserAnak extends AppCompatActivity {
             public void onClick(View v) {
                 String tempNamaAnak = namaAnak.getText().toString();
                 int tempUsia = childAge;
+
+                if (tinggiBadanAnak.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Tinggi Badan Belum Diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (beratBadanAnak.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Berat Badan Belum Diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                double tempTinggiBadanAnak = Double.parseDouble(tinggiBadanAnak.getText().toString());
+                double tempBeratBadanAnak = Double.parseDouble(beratBadanAnak.getText().toString());
+
+                //Jenis Kelamin Anak
+                char tempJenisKelamin = 'L';
+                int selectedJenisKelamin = radioGroupJenisKel.getCheckedRadioButtonId();
+                if (selectedJenisKelamin == R.id.jenis_kelamin_p) {
+                    tempJenisKelamin = 'P';
+                }
+
+                //Make objAnak
+                Anak anak = new Anak(tempNamaAnak, tempJenisKelamin, tempUsia, tempTinggiBadanAnak, tempBeratBadanAnak);
+
                 Intent i = new Intent(UserAnak.this, DataUserAnak.class);
                 i.putExtra("NamaAnak", tempNamaAnak);
                 i.putExtra("UsiaAnak", tempUsia);
+
+                //Region Object
+                i.putExtra("objAnak", anak);
+                i.putExtra("objIbu", ibu);
                 startActivity(i);
             }
         });

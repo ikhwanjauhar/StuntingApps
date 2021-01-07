@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".DataUserAnak"></activity>
+        <activity android:name=".Predict"></activity>
+        <activity android:name=".DataUserAnak" />
         <activity android:name=".DataUserIbu" />
         <activity android:name=".Test" />
         <activity android:name=".UserAnak" />

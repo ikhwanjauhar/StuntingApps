@@ -36,7 +36,7 @@ public class UserIbu extends AppCompatActivity {
     EditText namaIbu;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    RadioGroup radioGroup;
+    RadioGroup radioGroupTempatTinggal;
     RadioButton radioButton;
     RadioButton radioButtonPekerjaan;
 
@@ -83,7 +83,7 @@ public class UserIbu extends AppCompatActivity {
         };
 
         //Tempat Tinggal
-        radioGroup = findViewById(R.id.radioGroup);
+        radioGroupTempatTinggal = findViewById(R.id.radio_group_tempat_tinggal);
 
         //Pekerjaan
         radioButtonPekerjaan = findViewById(R.id.mothOccup_Yes);
@@ -115,6 +115,7 @@ public class UserIbu extends AppCompatActivity {
                 tempIbu = namaIbu.getText().toString();
                 int tempUsia = mothAge;
 
+
                 if (tinggiBadanIbu.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Tinggi Badan Belum Diisi", Toast.LENGTH_SHORT).show();
                     return;
@@ -127,10 +128,22 @@ public class UserIbu extends AppCompatActivity {
                 double tempTinggiBadan = Double.parseDouble(tinggiBadanIbu.getText().toString());
                 double tempBeratBadan = Double.parseDouble(beratBadanIbu.getText().toString());;
                 double mothBMI = getMothBMI(tempTinggiBadan, tempBeratBadan);
+
+                //Tempat Tinggal
+                char tempTempatTinggal = 'R';
+                int selectedTempatTinggal = radioGroupTempatTinggal.getCheckedRadioButtonId();
+                if (selectedTempatTinggal == R.id.tempat_kota) {
+                    tempTempatTinggal = 'U';
+                }
+
+                //Make objIbu
+                Ibu ibu = new Ibu(tempIbu, tempUsia, tempTinggiBadan, tempBeratBadan, tempTempatTinggal);
+
                 Intent i = new Intent(UserIbu.this, DataUserIbu.class);
                 i.putExtra("NamaIbu", tempIbu);
                 i.putExtra("UsiaIbu", tempUsia);
                 i.putExtra("MothBMI", mothBMI);
+                i.putExtra("objIbu", ibu);
                 startActivity(i);
             }
         });
@@ -138,7 +151,7 @@ public class UserIbu extends AppCompatActivity {
 
     }
     public void checkButton(View v) {
-        int radioId = radioGroup.getCheckedRadioButtonId();
+        int radioId = radioGroupTempatTinggal.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
     }
 

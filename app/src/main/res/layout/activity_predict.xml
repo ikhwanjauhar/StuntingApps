@@ -4,43 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataUserAnak">
+    tools:context=".Predict">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="731dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp">
-            </LinearLayout>-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:background="@drawable/rectangle"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="Hasil Prediksi"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginBottom="8dp">
+                </TextView>
 
-                <LinearLayout
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    android:layout_marginHorizontal="16dp">
+                </TextView>
+
+                <TextView
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat Hasil Prediksi Risiko Stunting Anak Anda!"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="16dp"
+                    android:layout_marginTop="8dp">
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="-20dp">
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="36dp"
-                        android:paddingTop="20dp"
-                        android:text="Profil Pengguna"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        android:textStyle="bold"></TextView>
-                </LinearLayout>
-
+                    android:layout_weight="1"></RelativeLayout>
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="Prediksi"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/rectangle_header"
+                    android:elevation="4dp"
+                    android:paddingVertical="4dp">
+                </TextView>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -61,8 +97,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="36dp"
+                android:layout_marginHorizontal="36dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -101,7 +136,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="16dp"></RelativeLayout>
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/nama_ibu"
+                            android:id="@+id/nama_anak"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
@@ -125,63 +160,6 @@
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
-                <!--Umur-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <!--Umur-->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Umur (Bulan)"
-                                android:textColor="@color/grey"
-                                android:textSize="16sp"></TextView>
-                        </LinearLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="16dp"
-                            ></RelativeLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Umur"
-                            android:textSize="16sp"
-                            android:id="@+id/usia_anak">
-                        </TextView>
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="4dp"></RelativeLayout>
-                        <View
-                            android:layout_width="wrap_content"
-                            android:layout_height="0.5dp"
-                            android:background="@color/grey">
-                        </View>
-                    </LinearLayout>
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1.5"
-                        android:layout_height="match_parent">
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:orientation="horizontal"></LinearLayout>
                 <!--Indeks-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -342,6 +320,69 @@
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
+                <!--Indeks-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <!--Indeks HAZ-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hasil Prediksi"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"></TextView>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="16dp"
+                            >
+                        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            >
+                            <TextView
+                                android:id="@+id/hasil_prediksi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:gravity="center_horizontal"
+                                android:hint="Hasil Prediksi"
+                                android:textSize="16sp"
+                                android:textColor="@color/grey"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"></RelativeLayout>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="0.5dp"
+                            android:background="@color/grey">
+                        </View>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"></LinearLayout>
+
                 <!--Next-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -355,8 +396,8 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/next_simpan"
-                            android:text="Simpan"
+                            android:id="@+id/lihat_hasil"
+                            android:text="Lihat Hasil"
                             android:backgroundTint="@color/purple_main">
                         </Button>
                     </LinearLayout>

@@ -17,13 +17,18 @@ public class DataUserIbu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_user_ibu);
 
+        //Retreive objIbu
+        Ibu ibu = (Ibu)getIntent().getSerializableExtra("objIbu");
 
         tvNamaIbu = (TextView) findViewById(R.id.nama_ibu);
         tvUsiaIbu = (TextView) findViewById(R.id.usia_ibu);
         tvMothBMI = (TextView) findViewById(R.id.moth_bmi);
-        tvNamaIbu.setText(getIntent().getStringExtra("NamaIbu"));
+
+        //tvNamaIbu.setText(getIntent().getStringExtra("NamaIbu"));
+        tvNamaIbu.setText(ibu.nama);
         tvUsiaIbu.setText(Integer.toString(getIntent().getIntExtra("UsiaIbu",0)));
         tvMothBMI.setText(String.format("%.2f", getIntent().getDoubleExtra("MothBMI",0)));
+
 
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_anak);
@@ -36,6 +41,7 @@ public class DataUserIbu extends AppCompatActivity {
                 Intent i = new Intent(DataUserIbu.this, UserAnak.class);
                 i.putExtra("NamaIbu", tempIbu);
                 i.putExtra("UsiaIbu", tempUsia);
+                i.putExtra("objIbu", ibu);
                 startActivity(i);
             }
         });

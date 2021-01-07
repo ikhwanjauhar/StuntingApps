@@ -110,6 +110,8 @@
                                 android:textColor="@color/grey"
                                 android:inputType="text"
                                 app:endIconMode="clear_text"
+                                android:paddingStart="0dp"
+                                android:paddingEnd="0dp"
                                 />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -189,7 +191,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Tinggi Badan (cm)"
                                 android:textColor="@color/grey"
-                                android:textSize="14dp"></TextView>
+                                android:textSize="16sp"></TextView>
                         </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -231,7 +233,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Berat Badan (kg)"
                                 android:textColor="@color/grey"
-                                android:textSize="14sp"></TextView>
+                                android:textSize="16sp"></TextView>
                         </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -250,6 +252,57 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!--Jumlah Anak-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Jumlah Anak"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"></TextView>
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/jumlah_anak"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:gravity="center_horizontal"
+                                android:textColor="@color/grey"
+                                android:inputType="number"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:layout_height="match_parent"></RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -288,7 +341,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
-                                android:id="@+id/radioGroup">
+                                android:id="@+id/radio_group_tempat_tinggal">
                                 <RadioButton
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
@@ -459,13 +512,24 @@
                             </RadioGroup>
                         </LinearLayout>
 
-                        <EditText
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/mothOccup"
-                            android:inputType="text"
-                            android:enabled="false">
-                        </EditText>
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mothOccup"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+                                android:textColor="@color/grey"
+                                android:inputType="text"
+                                android:enabled="false"
+                                android:hint="Pekerjaan"
+                                android:paddingStart="0dp"
+                                android:paddingEnd="0dp"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -492,7 +556,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pendapatan per Bulan"
+                                android:text="Pendapatan Keluarga per Tahun"
                                 android:textColor="@color/grey"
                                 android:textSize="16sp"></TextView>
                             <RelativeLayout
@@ -509,7 +573,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Poorest"
+                                    android:text="Poorest (&#60; Rp 14 juta)"
                                     android:id="@+id/wealth_index_PS"
                                     android:onClick="checkButton"
                                     android:checked="true"
@@ -519,7 +583,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Poorer"
+                                    android:text="Poorer (Rp 14-36 juta)"
                                     android:id="@+id/wealth_index_PR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -528,7 +592,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Middle"
+                                    android:text="Middle (Rp 36-60 juta)"
                                     android:id="@+id/wealth_index_M"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -537,7 +601,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Richer"
+                                    android:text="Richer (Rp 60-120 juta)"
                                     android:id="@+id/wealth_index_RR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -546,7 +610,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Richest"
+                                    android:text="Richest (&#62; Rp 120 juta)"
                                     android:id="@+id/wealth_index_RS"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
