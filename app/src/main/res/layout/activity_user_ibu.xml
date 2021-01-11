@@ -409,13 +409,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:id="@+id/radioGroupPendidikan">
+                                android:id="@+id/radio_group_tingkat_pendidikan">
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:text="Tidak Pernah Sekolah"
-                                    android:id="@+id/mothEdu_NoEdu"
+                                    android:id="@+id/moth_edu_no_edu"
                                     android:onClick="checkButton"
                                     android:checked="true"
                                     android:buttonTint="@color/purple_main">
@@ -425,7 +425,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:text="Dasar (SD)"
-                                    android:id="@+id/mothEdu_Primary"
+                                    android:id="@+id/moth_edu_primary"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
                                 </RadioButton>
@@ -434,7 +434,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:text="Menengah (SMP-SMA)"
-                                    android:id="@+id/mothEdu_Secondary"
+                                    android:id="@+id/moth_edu_secondary"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
                                 </RadioButton>
@@ -443,7 +443,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
                                     android:text="Tinggi (Perguruan Tinggi)"
-                                    android:id="@+id/mothEdu_Higher"
+                                    android:id="@+id/moth_edu_higher"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
                                 </RadioButton>
@@ -489,7 +489,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:id="@+id/radioGroupPekerjaan">
+                                android:id="@+id/radio_group_pekerjaan">
                                 <RadioButton
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -573,7 +573,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Poorest (&#60; Rp 14 juta)"
+                                    android:text="&#60; Rp 14 juta"
                                     android:id="@+id/wealth_index_PS"
                                     android:onClick="checkButton"
                                     android:checked="true"
@@ -583,7 +583,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Poorer (Rp 14-36 juta)"
+                                    android:text="Rp 14-36 juta"
                                     android:id="@+id/wealth_index_PR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -592,7 +592,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Middle (Rp 36-60 juta)"
+                                    android:text="Rp 36-60 juta"
                                     android:id="@+id/wealth_index_M"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -601,7 +601,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Richer (Rp 60-120 juta)"
+                                    android:text="Rp 60-120 juta"
                                     android:id="@+id/wealth_index_RR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -610,7 +610,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Richest (&#62; Rp 120 juta)"
+                                    android:text="&#62; Rp 120 juta"
                                     android:id="@+id/wealth_index_RS"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">

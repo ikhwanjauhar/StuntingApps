@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,13 +30,16 @@ public class UserAnak extends AppCompatActivity {
     int childAge;
 
     private TextView mDisplayNamaIbu;
-    private TextView mDisplayDate;
+    private TextView tvTanggalLahirAnak;
 
-    EditText namaAnak, tinggiBadanAnak, beratBadanAnak;
+    EditText namaAnak, beratLahirAnak, tinggiBadanAnak, beratBadanAnak;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     RadioGroup radioGroupJenisKel;
     RadioButton radioButton;
+
+    //Radio Group Tingkat Anemia Anak
+    RadioGroup rgTingkatPenyakitAnemiaAnak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,9 @@ public class UserAnak extends AppCompatActivity {
         mDisplayNamaIbu.setText("Anak dari Ibu "+getIntent().getStringExtra("NamaIbu"));
 
         //Tanggal Lahir
-        mDisplayDate = (TextView) findViewById(R.id.tanggal_lahir);
+        tvTanggalLahirAnak = (TextView) findViewById(R.id.tanggal_lahir_anak);
 
-        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+        tvTanggalLahirAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
@@ -76,7 +80,7 @@ public class UserAnak extends AppCompatActivity {
                 c.set(Calendar.DAY_OF_MONTH, day);
 
                 String format = new SimpleDateFormat("dd/MM/yyyy").format(c.getTime());
-                mDisplayDate.setText(format);
+                tvTanggalLahirAnak.setText(format);
                 childAge = calculateAge(c.getTimeInMillis());
             }
         };
@@ -84,11 +88,17 @@ public class UserAnak extends AppCompatActivity {
         //Jenis Kelamin
         radioGroupJenisKel = findViewById(R.id.radio_group_jenis_kel);
 
+        //Berat Lahir Anak
+        beratLahirAnak = findViewById(R.id.berat_lahir);
+
         //Tinggi Badan Anak
         tinggiBadanAnak = (EditText) findViewById(R.id.tinggi_badan);
 
         //Berat Badan Anak
         beratBadanAnak = (EditText) findViewById(R.id.berat_badan);
+
+        //Tingkat Penyakit Anemia
+        rgTingkatPenyakitAnemiaAnak = findViewById(R.id.radio_group_penyakit_anemia);
 
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_anak);
@@ -100,6 +110,35 @@ public class UserAnak extends AppCompatActivity {
                 String tempNamaAnak = namaAnak.getText().toString();
                 int tempUsia = childAge;
 
+                //Tanggal Lahir
+                String tanggalLahirAnak = tvTanggalLahirAnak.getText().toString();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date temptanggalLahirAnak = null;
+                try {
+                    temptanggalLahirAnak = formatter.parse(tanggalLahirAnak);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                //Berat Lahir Anak
+                if (beratLahirAnak.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Berat Lahir Anak Belum Diisi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                char tempBeratLahir = 'N';
+                double inBeratLahir =  Double.parseDouble(beratLahirAnak.getText().toString());
+                //large (>4 kg), normal (2.5-4 kg) and small (<2.5 kg)
+                if (inBeratLahir>4) {
+                    tempBeratLahir = 'L';
+                }
+                else if (inBeratLahir>=2.5 && inBeratLahir<=4) {
+                    tempBeratLahir = 'N';
+                }
+                else if (inBeratLahir<2.5) {
+                    tempBeratLahir = 'S';
+                }
+
+                //Tinggi Badan Anak
                 if (tinggiBadanAnak.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Tinggi Badan Belum Diisi", Toast.LENGTH_SHORT).show();
                     return;
@@ -118,8 +157,29 @@ public class UserAnak extends AppCompatActivity {
                     tempJenisKelamin = 'P';
                 }
 
+                //Tingkat Penyakit Anemia
+                char tempTingkatPenyakitAnemiaAnak;
+                int selectedTempatTinggal = rgTingkatPenyakitAnemiaAnak.getCheckedRadioButtonId();
+                switch (selectedTempatTinggal) {
+                    //Severe
+                    case R.id.penyakit_anemia_S:
+                        tempTingkatPenyakitAnemiaAnak = 'S';
+                    //Moderate
+                    case R.id.penyakit_anemia_M:
+                        tempTingkatPenyakitAnemiaAnak = 'M';
+                    //Mild
+                    case R.id.penyakit_anemia_I:
+                        tempTingkatPenyakitAnemiaAnak = 'I';
+                    //Not Anemic
+                    default:
+                        tempTingkatPenyakitAnemiaAnak = 'N';
+                }
+
                 //Make objAnak
-                Anak anak = new Anak(tempNamaAnak, tempJenisKelamin, tempUsia, tempTinggiBadanAnak, tempBeratBadanAnak);
+                Anak anak = new Anak(
+                        tempNamaAnak, tempJenisKelamin, tempUsia, tempBeratLahir,
+                        tempTinggiBadanAnak, tempBeratBadanAnak, temptanggalLahirAnak,
+                        tempTingkatPenyakitAnemiaAnak);
 
                 Intent i = new Intent(UserAnak.this, DataUserAnak.class);
                 i.putExtra("NamaAnak", tempNamaAnak);

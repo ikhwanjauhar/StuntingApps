@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Predict extends AppCompatActivity {
 
     //Variables
-    private TextView tvHasilPrediksi, tvNamaAnak, tvWAZScore;
+    private TextView tvHasilPrediksi, tvNamaAnak, tvHAZScore, tvWAZScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,11 @@ public class Predict extends AppCompatActivity {
         tvNamaAnak = (TextView) findViewById(R.id.nama_anak);
         tvNamaAnak.setText(anak.nama);
 
+        tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
+        tvHAZScore.setText(String.valueOf(anak.indexHAZ));
+
         tvWAZScore = (TextView) findViewById(R.id.indeks_waz);
-        //tvWAZScore.setText(String.valueOf(anak.getWAZScore()));
+        tvWAZScore.setText(String.valueOf(anak.indexWAZ));
 
         //Button Predict
         Button prediksi = (Button)findViewById(R.id.lihat_hasil);
@@ -42,8 +45,8 @@ public class Predict extends AppCompatActivity {
                 DecisionTree dt = new DecisionTree();
 
                 //Test sRule1
-                dt.haz = -3;
-                //dt.waz = anak.getWAZScore();
+                dt.haz = anak.indexHAZ;
+                dt.waz = anak.indexWAZ;
 
                 String results [] = new String [4];
 

@@ -4,30 +4,40 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author WanHar
  */
 public class Anak implements Serializable {
     String nama;
-    char jenisKel;
+    char jenisKel, beratLahir, tingkatPenyakitAnemiaAnak;
     int umurBulan;
     double tinggiBadanCm;
     double beratBadanKg;
-    int indexArray, indexWAZ;
+    int indexArray, indexWAZ, indexHAZ;
+    Date tanggalLahirAnak;
 
     public Anak(
             String nama,
             char jenisKel,
             int umurBulan,
+            char beratLahir,
             double tinggiBadanCm,
-            double beratBadanKg
+            double beratBadanKg,
+            Date tanggalLahirAnak,
+            char tingkatPenyakitAnemiaAnak
     ){
         this.nama = nama;
         this.jenisKel = jenisKel;
         this.umurBulan = umurBulan;
+        this.beratLahir = beratLahir;
         this.tinggiBadanCm = tinggiBadanCm;
         this.beratBadanKg = beratBadanKg;
+        this.tanggalLahirAnak = tanggalLahirAnak;
+        this.tingkatPenyakitAnemiaAnak = tingkatPenyakitAnemiaAnak;
     }
 
     public int getUmur(){
@@ -49,15 +59,28 @@ public class Anak implements Serializable {
 //    }
 
 
-    //WAZ
-    public int getWAZScore (InputStream inDataBBUL){
+    //HAZ
+    public int getHAZScore (InputStream inDataTBU){
         try {
             //WAZ
             //String pathDataBBUL = "C:\\Users\\WanHar\\Documents\\Kuliah Semester 7\\TA\\Data\\CSV\\BBUL060.csv";
 
-            ReadDataAntropometri dataBBUL060 = new ReadDataAntropometri();
-            dataBBUL060.readBBUL(inDataBBUL);
-            indexArray = dataBBUL060.findIndex(umurBulan, beratBadanKg);
+            ReadDataAntropometri dataTBU = new ReadDataAntropometri();
+            indexArray = dataTBU.findIndex(umurBulan, beratBadanKg, dataTBU.readData060(inDataTBU));
+            indexHAZ = convertToZScore(indexArray);
+        } catch (IOException e) {
+        }
+        return this.indexHAZ;
+    }
+
+    //WAZ
+    public int getWAZScore (InputStream inDataBBU){
+        try {
+            //WAZ
+            //String pathDataBBUL = "C:\\Users\\WanHar\\Documents\\Kuliah Semester 7\\TA\\Data\\CSV\\BBUL060.csv";
+
+            ReadDataAntropometri dataBBU = new ReadDataAntropometri();
+            indexArray = dataBBU.findIndex(umurBulan, beratBadanKg, dataBBU.readData060(inDataBBU));
             indexWAZ = convertToZScore(indexArray);
         } catch (IOException e) {
         }

@@ -142,7 +142,7 @@
                         android:layout_height="24dp"></RelativeLayout>
 
                     <TextView
-                        android:id="@+id/tanggal_lahir"
+                        android:id="@+id/tanggal_lahir_anak"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"

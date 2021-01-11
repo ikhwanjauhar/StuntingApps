@@ -32,13 +32,22 @@ public class UserIbu extends AppCompatActivity {
 
     private TextView mDisplayDate;
     int mothAge;
+    char moth_occup;
+
     EditText tinggiBadanIbu, beratBadanIbu;
-    EditText namaIbu;
+    EditText namaIbu, jumlahAnak;
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
     RadioGroup radioGroupTempatTinggal;
     RadioButton radioButton;
     RadioButton radioButtonPekerjaan;
+
+    //Radio Group Tingkat Pendidikan
+    RadioGroup rgTingkatPendidikan;
+
+    //Radio Group Wealth Index
+    RadioGroup rgWealthIndex;
 
     //Pekerjaan
     private EditText editTextPekerjaan;
@@ -82,13 +91,41 @@ public class UserIbu extends AppCompatActivity {
             }
         };
 
-        //Tempat Tinggal
-        radioGroupTempatTinggal = findViewById(R.id.radio_group_tempat_tinggal);
-
         //Pekerjaan
         radioButtonPekerjaan = findViewById(R.id.mothOccup_Yes);
         editTextPekerjaan = findViewById(R.id.mothOccup);
-        RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupPekerjaan);
+        RadioGroup rg = (RadioGroup) findViewById(R.id.radio_group_pekerjaan);
+
+        //Status Pekerjaan Ibu Working (Y) / Not Working (N)
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.mothOccup_Yes){
+                    editTextPekerjaan.setEnabled(true);
+                    moth_occup = 'Y';
+                }
+                else{
+                    editTextPekerjaan.setEnabled(false);
+                    moth_occup = 'N';
+                }
+            }
+        });
+
+        namaIbu = (EditText) findViewById(R.id.nama_ibu);
+        tinggiBadanIbu = (EditText) findViewById(R.id.tinggi_badan);
+        beratBadanIbu = (EditText) findViewById(R.id.berat_badan);
+
+        //Jumlah Anak
+        jumlahAnak = (EditText) findViewById(R.id.jumlah_anak);
+
+        //Tempat Tinggal
+        radioGroupTempatTinggal = findViewById(R.id.radio_group_tempat_tinggal);
+
+        //Tingkat Pendidikan
+        rgTingkatPendidikan = findViewById(R.id.radio_group_tingkat_pendidikan);
+
+        //Tingkat Pendidikan
+        rgWealthIndex = findViewById(R.id.radio_group_pendapatan);
 
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -102,19 +139,24 @@ public class UserIbu extends AppCompatActivity {
             }
         });
 
-        namaIbu = (EditText) findViewById(R.id.nama_ibu);
-        tinggiBadanIbu = (EditText) findViewById(R.id.tinggi_badan);
-        beratBadanIbu = (EditText) findViewById(R.id.berat_badan);
-
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_anak);
         nextAnak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tempIbu;
-                tempIbu = namaIbu.getText().toString();
+                String tempNamaIbu;
+                tempNamaIbu = namaIbu.getText().toString();
                 int tempUsia = mothAge;
 
+                //Tanggal Lahir
+                String tanggalLahirIbu = mDisplayDate.getText().toString();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date tempTanggalLahirIbu = null;
+                try {
+                    tempTanggalLahirIbu = formatter.parse(tanggalLahirIbu);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
                 if (tinggiBadanIbu.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Tinggi Badan Belum Diisi", Toast.LENGTH_SHORT).show();
@@ -136,11 +178,51 @@ public class UserIbu extends AppCompatActivity {
                     tempTempatTinggal = 'U';
                 }
 
+                //Tingkat Pendidikan
+                char tempTingkatPendidikan;
+                int selectedTingkatPendidikan = rgTingkatPendidikan.getCheckedRadioButtonId();
+                if (selectedTingkatPendidikan == R.id.moth_edu_primary) {
+                    tempTingkatPendidikan = 'P';
+                }
+                else if (selectedTingkatPendidikan == R.id.moth_edu_secondary) {
+                    tempTingkatPendidikan = 'S';
+                }
+                else if (selectedTingkatPendidikan == R.id.moth_edu_higher) {
+                    tempTingkatPendidikan = 'H';
+                }
+                else {
+                    tempTingkatPendidikan = 'N';
+                }
+
+                //Status Pekerjaan Ibu Working / Not Working
+                char tempStatusPekerjaanIbu = moth_occup;
+
+                //Wealth Index
+                String tempWealthIndex;
+                int selectedWealthIndex = rgWealthIndex.getCheckedRadioButtonId();
+                if (selectedWealthIndex == R.id.wealth_index_PR) {
+                    tempWealthIndex = "PR";
+                }
+                else if (selectedWealthIndex == R.id.wealth_index_M) {
+                    tempWealthIndex = "M";
+                }
+                else if (selectedWealthIndex == R.id.wealth_index_RR) {
+                    tempWealthIndex = "RR";
+                }
+                else if (selectedWealthIndex == R.id.wealth_index_RS) {
+                    tempWealthIndex = "RS";
+                }
+                else {
+                    tempWealthIndex = "PS";
+                }
+
                 //Make objIbu
-                Ibu ibu = new Ibu(tempIbu, tempUsia, tempTinggiBadan, tempBeratBadan, tempTempatTinggal);
+                Ibu ibu = new Ibu(tempNamaIbu, tempUsia, tempTinggiBadan, tempBeratBadan,
+                        tempTempatTinggal, tempTingkatPendidikan, tempStatusPekerjaanIbu,
+                        tempWealthIndex, tempTanggalLahirIbu);
 
                 Intent i = new Intent(UserIbu.this, DataUserIbu.class);
-                i.putExtra("NamaIbu", tempIbu);
+                i.putExtra("NamaIbu", tempNamaIbu);
                 i.putExtra("UsiaIbu", tempUsia);
                 i.putExtra("MothBMI", mothBMI);
                 i.putExtra("objIbu", ibu);

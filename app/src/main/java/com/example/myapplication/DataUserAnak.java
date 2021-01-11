@@ -12,7 +12,7 @@ import java.io.InputStream;
 
 public class DataUserAnak extends AppCompatActivity {
 
-    private TextView tvNamaAnak, tvUsiaAnak, tvWAZScore;
+    private TextView tvNamaAnak, tvUsiaAnak, tvWAZScore, tvHAZScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,57 @@ public class DataUserAnak extends AppCompatActivity {
         tvNamaAnak.setText(getIntent().getStringExtra("NamaAnak"));
         tvUsiaAnak.setText(Integer.toString(getIntent().getIntExtra("UsiaAnak",0)));
 
-        //Indeks
-        InputStream bbul060 = getResources().openRawResource(R.raw.bbul_060);
-        tvWAZScore = (TextView) findViewById(R.id.indeks_waz);
-        tvWAZScore.setText(String.valueOf(anak.getWAZScore(bbul060)));
+        //Indeks HAZ
+        //Laki-Laki
+        if (anak.jenisKel == 'L') {
+            //Usia 0-24
+            if (anak.umurBulan<=24) {
+                InputStream pbul024 = getResources().openRawResource(R.raw.pbul_024);
+                anak.indexHAZ = anak.getHAZScore(pbul024);
+                tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
+                tvHAZScore.setText(String.valueOf(anak.indexHAZ));
+            }
+            //Usia 24-60
+            else if (anak.umurBulan>24) {
+                InputStream pbul2460 = getResources().openRawResource(R.raw.pbup_024);
+                anak.indexHAZ = anak.getHAZScore(pbul2460);
+                tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
+                tvHAZScore.setText(String.valueOf(anak.indexHAZ));
+            }
+        }
+        //Perempuan
+        else {
+            //Usia 0-24
+            if (anak.umurBulan<=24) {
+                InputStream pbup024 = getResources().openRawResource(R.raw.pbup_024);
+                anak.indexHAZ = anak.getHAZScore(pbup024);
+                tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
+                tvHAZScore.setText(String.valueOf(anak.indexHAZ));
+            }
+            //Usia 24-60
+            else if (anak.umurBulan>24) {
+                InputStream pbup2460 = getResources().openRawResource(R.raw.pbup_024);
+                anak.indexHAZ = anak.getHAZScore(pbup2460);
+                tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
+                tvHAZScore.setText(String.valueOf(anak.indexHAZ));
+            }
+        }
+
+        //Indeks WAZ
+        //Laki-Laki
+        if (anak.jenisKel == 'L') {
+            InputStream bbul060 = getResources().openRawResource(R.raw.bbul_060);
+            anak.indexWAZ = anak.getWAZScore(bbul060);
+            tvWAZScore = (TextView) findViewById(R.id.indeks_waz);
+            tvWAZScore.setText(String.valueOf(anak.indexWAZ));
+        }
+        //Perempuan
+        else {
+            InputStream bbup060 = getResources().openRawResource(R.raw.bbul_060);
+            anak.indexWAZ = anak.getWAZScore(bbup060);
+            tvWAZScore = (TextView) findViewById(R.id.indeks_waz);
+            tvWAZScore.setText(String.valueOf(anak.indexWAZ));
+        }
 
         //Button Next
         Button nextAnak = (Button)findViewById(R.id.next_simpan);
