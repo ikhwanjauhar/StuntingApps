@@ -18,7 +18,8 @@ public class SplashScreen extends AppCompatActivity {
         masuk.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SplashScreen.this, UserIbu.class);
+                //Intent i = new Intent(SplashScreen.this, UserIbu.class);
+                Intent i = new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(i);
             }
         });

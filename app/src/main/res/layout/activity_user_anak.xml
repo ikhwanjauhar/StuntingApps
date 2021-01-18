@@ -255,7 +255,6 @@
                                 android:textColor="@color/grey"
                                 android:inputType="numberDecimal"/>
                         </com.google.android.material.textfield.TextInputLayout>
-
                     </LinearLayout>
 
                     <RelativeLayout
