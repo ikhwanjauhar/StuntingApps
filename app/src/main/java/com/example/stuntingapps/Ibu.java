@@ -1,8 +1,6 @@
-package com.example.myapplication;
+package com.example.stuntingapps;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

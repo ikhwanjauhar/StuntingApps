@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.stuntingapps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         Button masuk = (Button)findViewById(R.id.masuk);
+
+
         masuk.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

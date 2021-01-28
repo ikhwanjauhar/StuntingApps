@@ -1,10 +1,13 @@
-package com.example.myapplication;
+package com.example.stuntingapps;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
+    //Wifi
     private static final String BASE_URL = "http://12.12.12.225:8080/stunting-apps/public/";
+    //Hotspot XL
+    //private static final String BASE_URL = "http://192.168.43.43:8080/stunting-apps/public/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 

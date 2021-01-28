@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".SignUpActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="36dp"
                         android:paddingTop="20dp"
-                        android:text="Login"
+                        android:text="Sign Up"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold"></TextView>
@@ -49,7 +49,7 @@
                     android:layout_marginHorizontal="36dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="Login"
+                    android:text="Daftar"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -61,6 +61,54 @@
                 android:layout_marginLeft="36dp"
                 android:layout_marginRight="36dp"
                 android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"></LinearLayout>
+
+                <!--User Name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!--User Name-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Username"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"></TextView>
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/user_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="0dp"
+                                android:paddingEnd="0dp"
+                                android:backgroundTint="@color/white"
+                                android:textColor="@color/grey"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -164,12 +212,12 @@
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
 
-                <!--Login-->
+                <!--Daftar-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <!--Login-->
+                    <!--Next-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -177,8 +225,8 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/button_login"
-                            android:text="Login"
+                            android:id="@+id/sign_up"
+                            android:text="Daftar"
                             android:backgroundTint="@color/purple_main">
                         </Button>
                     </LinearLayout>
@@ -192,8 +240,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_view_sign_up"
-                    android:text="Belum Punya Akun?\nKlik di sini untuk Daftar"
+                    android:id="@+id/text_view_login"
+                    android:text="Sudah Punya Akun?\nKlik di sini untuk Login"
                     android:gravity="center">
                 </TextView>
 
@@ -201,7 +249,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:orientation="horizontal"></LinearLayout>
-
             </LinearLayout>
 
 

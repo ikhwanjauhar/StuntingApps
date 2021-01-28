@@ -1,35 +1,32 @@
-package com.example.myapplication;
+package com.example.stuntingapps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.regex.Pattern;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText etEmail, etPassword, etName, etSchool;
+    private EditText etEmail, etPassword, etUserName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sign_up);
 
         etEmail = findViewById(R.id.email);
         etPassword = findViewById(R.id.password);
-        etName = findViewById(R.id.password);
-        etSchool = findViewById(R.id.school);
+        etUserName = findViewById(R.id.user_name);
 
         findViewById(R.id.sign_up).setOnClickListener(this);
+        findViewById(R.id.text_view_login).setOnClickListener(this);
 
     }
 
@@ -37,8 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
-        String name = etName.getText().toString().trim();
-        String school = etSchool.getText().toString().trim();
+        String user_name = etUserName.getText().toString().trim();
 
         //Validations
 
@@ -66,41 +62,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        //name
-        if (name.isEmpty()){
-            etName.setError("Masukkan username");
-            etName.requestFocus();
-            return;
-        }
-
-        //School
-        if (name.isEmpty()){
-            etSchool.setError("Masukkan school");
-            etSchool.requestFocus();
+        //username
+        if (user_name.isEmpty()){
+            etUserName.setError("Masukkan username");
+            etUserName.requestFocus();
             return;
         }
 
         //User Registration via API
-        Call<ResponseBody> call = RetrofitClient
+        Call<DefaultResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()
-                .createUser(email, password, name, school);
+                .createUser(email, user_name, password);
 
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<DefaultResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    String s = response.body().string();
-                    Toast.makeText(LoginActivity.this, s, Toast.LENGTH_LONG).show();
-                } catch(IOException e) {
-                    e.printStackTrace();
-                }
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                if (response.code() == 201) {
 
+                    DefaultResponse dr = response.body();
+                    Toast.makeText(SignUpActivity.this, dr.getMsg(), Toast.LENGTH_LONG).show();
+
+                } else if (response.code() == 422) {
+                    Toast.makeText(SignUpActivity.this, "User already exist", Toast.LENGTH_LONG).show();
+                }
             }
 
+
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                Toast.makeText(SignUpActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -111,6 +102,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.sign_up:
                 userSignUp();
             break;
+            case R.id.text_view_login:
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
         }
     }
 }

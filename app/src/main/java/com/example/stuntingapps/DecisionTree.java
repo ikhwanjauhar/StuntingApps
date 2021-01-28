@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.stuntingapps;
 
 public class DecisionTree {
     double mothBMI;
