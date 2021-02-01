@@ -17,8 +17,13 @@ import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+//import java.time.LocalDate;
+//import java.time.Period;
+//import java.util.Calendar;
+//import java.util.Date;
+import java.time.*;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class UserIbu extends AppCompatActivity {
 
@@ -231,6 +236,7 @@ public class UserIbu extends AppCompatActivity {
         radioButton = findViewById(radioId);
     }
 
+    /*
     int calculateAge (long date) {
         Calendar dob = Calendar.getInstance();
         dob.setTimeInMillis(date);
@@ -241,6 +247,37 @@ public class UserIbu extends AppCompatActivity {
         if (today.get(Calendar.DAY_OF_MONTH)<dob.get(Calendar.DAY_OF_MONTH)){
             age--;
         }
+        return age;
+    }
+    */
+
+    int calculateAge (long dob) {
+        int age = 0;
+        Calendar today = Calendar.getInstance();
+        long todayInMillis = today.getTimeInMillis();
+
+        // Calculate time difference
+        // in milliseconds
+        long difference_In_Time = todayInMillis - dob;
+
+        final long milliseconds = difference_In_Time;
+        long dy = TimeUnit.MILLISECONDS.toDays(milliseconds);
+        final long yr = dy / 365;
+        dy %= 365;
+        final long mn = dy / 30;
+        dy %= 30;
+        final long wk = dy / 7;
+        dy %= 7;
+        final long hr = TimeUnit.MILLISECONDS.toHours(milliseconds)
+                - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(milliseconds));
+        final long min = TimeUnit.MILLISECONDS.toMinutes(milliseconds)
+                - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(milliseconds));
+        final long sec = TimeUnit.MILLISECONDS.toSeconds(milliseconds)
+                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(milliseconds));
+        final long ms = TimeUnit.MILLISECONDS.toMillis(milliseconds)
+                - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(milliseconds));
+        age = (int) yr;
+
         return age;
     }
 

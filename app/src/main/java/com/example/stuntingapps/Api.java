@@ -47,4 +47,19 @@ public interface Api {
 
     @DELETE("deleteuser/{user_id}")
     Call<DefaultResponse> deleteUser(@Path("user_id") int user_id);
+
+    @FormUrlEncoded
+    @POST("createdataibu")
+    Call<DefaultResponse> createDataIbu(
+            @Field("nama_ibu") String nama_ibu,
+            @Field("tanggal_lahir_ibu") String tanggal_lahir_ibu,
+            @Field("tinggi_badan_ibu") Double tinggi_badan_ibu,
+            @Field("berat_badan_ibu") Double berat_badan_ibu,
+            @Field("jumlah_anak_ibu") Integer jumlah_anak_ibu,
+            @Field("tempat_tinggal") String tempat_tinggal,
+            @Field("tingkat_pendidikan") String tingkat_pendidikan,
+            @Field("pekerjaan") String pekerjaan,
+            @Field("pekerjaan_desc") String pekerjaan_desc,
+            @Field("pendapatan_keluarga_per_tahun") String pendapatan_keluarga_per_tahun
+    );
 }

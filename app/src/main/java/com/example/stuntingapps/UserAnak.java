@@ -18,6 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class UserAnak extends AppCompatActivity {
 
@@ -194,6 +195,7 @@ public class UserAnak extends AppCompatActivity {
         radioButton = findViewById(radioId);
     }
 
+    /*
     int calculateAge (long date) {
         Calendar dob = Calendar.getInstance();
         dob.setTimeInMillis(date);
@@ -212,5 +214,39 @@ public class UserAnak extends AppCompatActivity {
         else {
             return (age*12)+ageMonth;
         }
+    }
+     */
+    int calculateAge (long dob) {
+        int years = 0;
+        int months = 0;
+        Calendar today = Calendar.getInstance();
+        long todayInMillis = today.getTimeInMillis();
+
+        // Calculate time difference
+        // in milliseconds
+        long difference_In_Time = todayInMillis - dob;
+
+        final long milliseconds = difference_In_Time;
+        long dy = TimeUnit.MILLISECONDS.toDays(milliseconds);
+        final long yr = dy / 365;
+        dy %= 365;
+        final long mn = dy / 30;
+        dy %= 30;
+        final long wk = dy / 7;
+        dy %= 7;
+        final long hr = TimeUnit.MILLISECONDS.toHours(milliseconds)
+                - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(milliseconds));
+        final long min = TimeUnit.MILLISECONDS.toMinutes(milliseconds)
+                - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(milliseconds));
+        final long sec = TimeUnit.MILLISECONDS.toSeconds(milliseconds)
+                - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(milliseconds));
+        final long ms = TimeUnit.MILLISECONDS.toMillis(milliseconds)
+                - TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(milliseconds));
+        years = (int) yr;
+        months = (int) mn;
+        if (years==0) {
+            return months;
+        }
+        return (years*12) + months;
     }
 }
