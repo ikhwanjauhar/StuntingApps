@@ -9,22 +9,25 @@ import java.util.Date;
  */
 public class Ibu implements Serializable {
     String nama, wealthIndex;
+    String pekerjaanIbuDesc = "";
     char tempatTinggal, tingkatPendidikan, statusPekerjaanIbu;
-    int umurTahun;
+    int umurTahun, jumlahAnak;
     double tinggiBadanCm;
     double beratBadanKg;
     Date tanggalLahirIbu;
 
-    public Ibu(String nama, int umurTahun, double tinggiBadanCm, double beratBadanKg,
-               char tempatTinggal, char tingkatPendidikan, char statusPekerjaanIbu,
+    public Ibu(String nama, int umurTahun, double tinggiBadanCm, double beratBadanKg, int jumlahAnak,
+               char tempatTinggal, char tingkatPendidikan, char statusPekerjaanIbu, String pekerjaanIbuDesc,
                String wealthIndex, Date tanggalLahirIbu) {
         this.nama = nama;
         this.umurTahun = umurTahun;
         this.tinggiBadanCm = tinggiBadanCm;
         this.beratBadanKg = beratBadanKg;
+        this.jumlahAnak = jumlahAnak;
         this.tempatTinggal = tempatTinggal;
         this.tingkatPendidikan = tingkatPendidikan;
         this.statusPekerjaanIbu = statusPekerjaanIbu;
+        this.pekerjaanIbuDesc = pekerjaanIbuDesc;
         this.wealthIndex = wealthIndex;
         this.tanggalLahirIbu = tanggalLahirIbu;
     }

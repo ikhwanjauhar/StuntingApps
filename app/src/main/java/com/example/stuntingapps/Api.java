@@ -51,6 +51,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("createdataibu")
     Call<DefaultResponse> createDataIbu(
+            @Field("user_id") int user_id,
             @Field("nama_ibu") String nama_ibu,
             @Field("tanggal_lahir_ibu") String tanggal_lahir_ibu,
             @Field("tinggi_badan_ibu") Double tinggi_badan_ibu,
@@ -60,6 +61,18 @@ public interface Api {
             @Field("tingkat_pendidikan") String tingkat_pendidikan,
             @Field("pekerjaan") String pekerjaan,
             @Field("pekerjaan_desc") String pekerjaan_desc,
-            @Field("pendapatan_keluarga_per_tahun") String pendapatan_keluarga_per_tahun
+            @Field("wealth_index") String wealth_index
+
+/*            @Field("nama_ibu") String user_id,
+            @Field("nama_ibu") String nama_ibu,
+            @Field("tanggal_lahir_ibu") String tanggal_lahir_ibu,
+            @Field("tinggi_badan_ibu") String tinggi_badan_ibu,
+            @Field("berat_badan_ibu") String berat_badan_ibu,
+            @Field("jumlah_anak_ibu") String jumlah_anak_ibu,
+            @Field("tempat_tinggal") String tempat_tinggal,
+            @Field("tingkat_pendidikan") String tingkat_pendidikan,
+            @Field("pekerjaan") String pekerjaan,
+            @Field("pekerjaan_desc") String pekerjaan_desc,
+            @Field("wealth_index") String wealth_index*/
     );
 }

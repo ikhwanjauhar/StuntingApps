@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.app.DatePickerDialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +33,7 @@ public class UserIbu extends AppCompatActivity {
     private TextView mDisplayDate;
     int mothAge;
     char moth_occup;
+    String pekerjaanDesc;
 
     EditText tinggiBadanIbu, beratBadanIbu;
     EditText namaIbu, jumlahAnak;
@@ -47,6 +49,9 @@ public class UserIbu extends AppCompatActivity {
 
     //Radio Group Wealth Index
     RadioGroup rgWealthIndex;
+
+    //Radio Group Wealth Index
+    RadioGroup rgStatusPekerjaan;
 
     //Pekerjaan
     private EditText editTextPekerjaan;
@@ -126,13 +131,19 @@ public class UserIbu extends AppCompatActivity {
         //Tingkat Pendidikan
         rgWealthIndex = findViewById(R.id.radio_group_pendapatan);
 
+        //Status Pekerjaan
+        rgStatusPekerjaan = findViewById(R.id.radio_group_pekerjaan);
+        editTextPekerjaan.setText("Tidak Bekerja");
+
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId == R.id.mothOccup_Yes){
                     editTextPekerjaan.setEnabled(true);
+                    editTextPekerjaan.setText("");
                 }
                 else{
+                    editTextPekerjaan.setText("Tidak Bekerja");
                     editTextPekerjaan.setEnabled(false);
                 }
             }
@@ -194,7 +205,20 @@ public class UserIbu extends AppCompatActivity {
                 }
 
                 //Status Pekerjaan Ibu Working / Not Working
-                char tempStatusPekerjaanIbu = moth_occup;
+                char tempStatusPekerjaanIbu;
+                int selectedStatusPekerjaanIbu = rgStatusPekerjaan.getCheckedRadioButtonId();
+                if (selectedStatusPekerjaanIbu == R.id.mothOccup_No) {
+                    tempStatusPekerjaanIbu = 'N';
+                }
+                else {
+                    tempStatusPekerjaanIbu = 'Y';
+                }
+
+                //Pekerjaan Desc
+                String tempPekerjaanDesc = editTextPekerjaan.getText().toString();
+                if (TextUtils.isEmpty(tempPekerjaanDesc)) {
+                    tempPekerjaanDesc = "";
+                }
 
                 //Wealth Index
                 String tempWealthIndex;
@@ -215,10 +239,20 @@ public class UserIbu extends AppCompatActivity {
                     tempWealthIndex = "PS";
                 }
 
+                //Jumlah Anak
+                int tempJumlahAnak = Integer.parseInt(jumlahAnak.getText().toString());
+
+                if (tempPekerjaanDesc.isEmpty()){
+                    editTextPekerjaan.setError("Masukkan Pekerjaan");
+                    editTextPekerjaan.requestFocus();
+                    return;
+                }
+
+
                 //Make objIbu
                 Ibu ibu = new Ibu(tempNamaIbu, tempUsia, tempTinggiBadan, tempBeratBadan,
-                        tempTempatTinggal, tempTingkatPendidikan, tempStatusPekerjaanIbu,
-                        tempWealthIndex, tempTanggalLahirIbu);
+                        tempJumlahAnak, tempTempatTinggal, tempTingkatPendidikan,
+                        tempStatusPekerjaanIbu, tempPekerjaanDesc, tempWealthIndex, tempTanggalLahirIbu);
 
                 Intent i = new Intent(UserIbu.this, DataUserIbu.class);
                 i.putExtra("NamaIbu", tempNamaIbu);

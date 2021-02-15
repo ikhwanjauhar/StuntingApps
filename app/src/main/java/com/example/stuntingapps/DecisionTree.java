@@ -24,7 +24,7 @@ public class DecisionTree {
     If HAZ=<-2SD AND WAZ=-2SD to 2SD
      */
     boolean sRule1() {
-        if (haz < -2 && waz >= 2 && waz <= 2) {
+        if (haz < -2 && waz >= -2 && waz <= 2) {
             return true;
         }
         return false;
