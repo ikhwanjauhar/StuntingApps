@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class Predict extends AppCompatActivity {
 
     //Variables
-    private TextView tvHasilPrediksi, tvNamaAnak, tvHAZScore, tvWAZScore;
+    private TextView tvHasilPrediksi, tvNamaAnak, tvHAZScore, tvWAZScore, tvWHZScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,17 @@ public class Predict extends AppCompatActivity {
         tvNamaAnak = (TextView) findViewById(R.id.nama_anak);
         tvNamaAnak.setText(anak.nama);
 
+        //HAZ
         tvHAZScore = (TextView) findViewById(R.id.indeks_haz);
         tvHAZScore.setText(String.valueOf(anak.indexHAZ));
 
+        //WAZ
         tvWAZScore = (TextView) findViewById(R.id.indeks_waz);
         tvWAZScore.setText(String.valueOf(anak.indexWAZ));
+
+        //HAZ
+        tvWHZScore = (TextView) findViewById(R.id.indeks_whz);
+        tvWHZScore.setText(String.valueOf(anak.indexWHZ));
 
         //Button Predict
         Button prediksi = (Button)findViewById(R.id.lihat_hasil);
@@ -44,8 +50,20 @@ public class Predict extends AppCompatActivity {
                 DecisionTree dt = new DecisionTree();
 
                 //Test sRule1
+                dt.mothBMI = ibu.getMothBMI();
                 dt.haz = anak.indexHAZ;
                 dt.waz = anak.indexWAZ;
+                dt.whz = anak.indexWHZ;
+                dt.totalNumberOfChildren = ibu.jumlahAnak;
+                dt.mothAge = ibu.umurTahun;
+                dt.childAge = anak.umurBulan;
+                dt.residence = ibu.tempatTinggal;
+                dt.childAge = anak.tingkatPenyakitAnemiaAnak;
+                dt.mothEdu = ibu.tingkatPendidikan;
+                dt.mothOccup = ibu.tempatTinggal;
+                dt.sexOfChild = anak.jenisKel;
+                dt.sizeAtBirth = anak.beratLahir;
+                dt.wealthIndex = ibu.wealthIndex;
 
                 String results [] = new String [4];
 

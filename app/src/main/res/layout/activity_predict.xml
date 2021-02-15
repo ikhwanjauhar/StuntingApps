@@ -24,7 +24,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
-                    android:text="Hasil Prediksi"
+                    android:text="Hasil Prognosis"
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -43,7 +43,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lihat Hasil Prediksi Risiko Stunting Anak Anda!"
+                    android:text="Lihat Hasil Prognosis Risiko Stunting Anak Anda!"
                     android:textColor="@color/white"
                     android:paddingHorizontal="16dp"
                     android:layout_marginTop="8dp">
@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:text="Prediksi"
+                    android:text="Prognosis"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:layout_gravity="center"
@@ -343,7 +343,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Hasil Prediksi"
+                                android:text="Hasil Prognosis"
                                 android:textColor="@color/grey"
                                 android:textSize="16sp"></TextView>
                         </LinearLayout>
@@ -363,7 +363,7 @@
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/white"
                                 android:gravity="center_horizontal"
-                                android:hint="Hasil Prediksi"
+                                android:hint="Hasil Prognosis"
                                 android:textSize="16sp"
                                 android:textColor="@color/grey"/>
                         </LinearLayout>

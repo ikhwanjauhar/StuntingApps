@@ -16,7 +16,7 @@ public class Anak implements Serializable {
     int umurBulan;
     double tinggiBadanCm;
     double beratBadanKg;
-    int indexArray, indexWAZ, indexHAZ;
+    int indexArray, indexWAZ, indexHAZ, indexWHZ;
     Date tanggalLahirAnak;
 
     public Anak(
@@ -61,7 +61,7 @@ public class Anak implements Serializable {
     //HAZ
     public int getHAZScore (InputStream inDataTBU){
         try {
-            //WAZ
+            //HAZ
             //String pathDataBBUL = "C:\\Users\\WanHar\\Documents\\Kuliah Semester 7\\TA\\Data\\CSV\\BBUL060.csv";
 
             ReadDataAntropometri dataTBU = new ReadDataAntropometri();
@@ -85,6 +85,31 @@ public class Anak implements Serializable {
         }
         return this.indexWAZ;
     }
+
+    //WHZ Umur 0-24
+    public int getWHZScore024 (InputStream inDataBBTB){
+        try {
+
+            ReadDataAntropometri dataBBTB = new ReadDataAntropometri();
+            indexArray = dataBBTB.findIndexWHZ024(tinggiBadanCm, beratBadanKg, dataBBTB.readDataWHZ024(inDataBBTB));
+            indexWHZ = convertToZScore(indexArray);
+        } catch (IOException e) {
+        }
+        return this.indexWHZ;
+    }
+
+    //WHZ Umur 24-60
+    public int getWHZScore2460 (InputStream inDataBBTB){
+        try {
+
+            ReadDataAntropometri dataBBTB = new ReadDataAntropometri();
+            indexArray = dataBBTB.findIndexWHZ2460(tinggiBadanCm, beratBadanKg, dataBBTB.readDataWHZ2460(inDataBBTB));
+            indexWHZ = convertToZScore(indexArray);
+        } catch (IOException e) {
+        }
+        return this.indexWHZ;
+    }
+
 
     //konversi Index array ke satuan ZScore
     public int convertToZScore(int indexZScore){

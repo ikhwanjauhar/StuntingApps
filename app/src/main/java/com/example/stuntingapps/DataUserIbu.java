@@ -58,7 +58,8 @@ public class DataUserIbu extends AppCompatActivity {
                         String.valueOf(ibu.beratBadanKg), String.valueOf(ibu.jumlahAnak), String.valueOf(ibu.tempatTinggal),
                         String.valueOf(ibu.tingkatPendidikan), String.valueOf(ibu.statusPekerjaanIbu),
                         ibu.pekerjaanIbuDesc, ibu.wealthIndex);*/
-                simpanDataIbu(9, ibu.nama, newDate, ibu.tinggiBadanCm,
+                int userId = SharedPrefManager.getInstance(DataUserIbu.this).getUser().getUserId();
+                simpanDataIbu(userId, ibu.nama, newDate, ibu.tinggiBadanCm,
                         ibu.beratBadanKg, ibu.jumlahAnak, String.valueOf(ibu.tempatTinggal),
                         String.valueOf(ibu.tingkatPendidikan), String.valueOf(ibu.statusPekerjaanIbu),
                         ibu.pekerjaanIbuDesc, ibu.wealthIndex);

@@ -61,6 +61,8 @@ public class UserIbu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_ibu);
 
+        //email
+        String email = getIntent().getStringExtra("email");
 
         //Tanggal Lahir
         mDisplayDate = (TextView) findViewById(R.id.tanggal_lahir);
@@ -250,7 +252,7 @@ public class UserIbu extends AppCompatActivity {
 
 
                 //Make objIbu
-                Ibu ibu = new Ibu(tempNamaIbu, tempUsia, tempTinggiBadan, tempBeratBadan,
+                Ibu ibu = new Ibu(email, tempNamaIbu, tempUsia, tempTinggiBadan, tempBeratBadan,
                         tempJumlahAnak, tempTempatTinggal, tempTingkatPendidikan,
                         tempStatusPekerjaanIbu, tempPekerjaanDesc, tempWealthIndex, tempTanggalLahirIbu);
 

@@ -8,7 +8,7 @@ import java.util.Date;
  * @author WanHar
  */
 public class Ibu implements Serializable {
-    String nama, wealthIndex;
+    String nama, wealthIndex, email;
     String pekerjaanIbuDesc = "";
     char tempatTinggal, tingkatPendidikan, statusPekerjaanIbu;
     int umurTahun, jumlahAnak;
@@ -16,9 +16,10 @@ public class Ibu implements Serializable {
     double beratBadanKg;
     Date tanggalLahirIbu;
 
-    public Ibu(String nama, int umurTahun, double tinggiBadanCm, double beratBadanKg, int jumlahAnak,
+    public Ibu(String email, String nama, int umurTahun, double tinggiBadanCm, double beratBadanKg, int jumlahAnak,
                char tempatTinggal, char tingkatPendidikan, char statusPekerjaanIbu, String pekerjaanIbuDesc,
                String wealthIndex, Date tanggalLahirIbu) {
+        this.email = email;
         this.nama = nama;
         this.umurTahun = umurTahun;
         this.tinggiBadanCm = tinggiBadanCm;

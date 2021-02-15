@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prediksi Stunting</string>
+    <string name="app_name">Prognosis Stunting</string>
     <string name="selamat_datang">SELAMAT DATANG</string>
     <string name="masting">MASTING</string>
     <string name="title_activity_login">LoginActivity</string>

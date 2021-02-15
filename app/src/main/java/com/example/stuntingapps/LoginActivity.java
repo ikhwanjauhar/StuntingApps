@@ -36,11 +36,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStart();
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-            Intent intent = new Intent(this, ProfileActivity.class);
+            Intent intent = new Intent(this, UserIbu.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
-    }
+    }ibu
      */
 
     private void userLogin() {
@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     //Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     Intent intent = new Intent(LoginActivity.this, UserIbu.class);
+                    intent.putExtra("email", email);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 
