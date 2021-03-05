@@ -556,7 +556,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pendapatan Keluarga per Tahun"
+                                android:text="Pengeluaran per Bulan"
                                 android:textColor="@color/grey"
                                 android:textSize="16sp"></TextView>
                             <RelativeLayout
@@ -573,7 +573,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="&#60; Rp 14 juta"
+                                    android:text="&#60; Rp 375.000"
                                     android:id="@+id/wealth_index_PS"
                                     android:onClick="checkButton"
                                     android:checked="true"
@@ -583,7 +583,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Rp 14-36 juta"
+                                    android:text="Rp 375.000-1.500.000"
                                     android:id="@+id/wealth_index_PR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -592,7 +592,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Rp 36-60 juta"
+                                    android:text="Rp 1.500.000-3.750.000"
                                     android:id="@+id/wealth_index_M"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -601,7 +601,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="Rp 60-120 juta"
+                                    android:text="Rp 3.750.000-7.500.000"
                                     android:id="@+id/wealth_index_RR"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
@@ -610,7 +610,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="16sp"
-                                    android:text="&#62; Rp 120 juta"
+                                    android:text="&#62; Rp 7.500.000"
                                     android:id="@+id/wealth_index_RS"
                                     android:onClick="checkButton"
                                     android:buttonTint="@color/purple_main">
